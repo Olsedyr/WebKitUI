@@ -1,2 +1,2 @@
-all:
-	gcc main.c -o minimal-ui `pkg-config --cflags --libs gtk+-3.0 webkit2gtk-4.1`
+minimal-ui: main.c
+	gcc -o minimal-ui main.c `pkg-config --cflags --libs gtk+-3.0 webkit2gtk-4.0`
