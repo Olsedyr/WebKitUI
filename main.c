@@ -9,7 +9,9 @@ int main(int argc, char *argv[]) {
     gtk_window_set_default_size(GTK_WINDOW(window), 800, 600);
 
     WebKitWebView *web_view = WEBKIT_WEB_VIEW(webkit_web_view_new());
-    webkit_web_view_load_uri(web_view, "index.html");
+    gchar *path = g_get_current_dir();
+    gchar *uri = g_strdup_printf("file://%s/index.html", path);
+    webkit_web_view_load_uri(web_view, uri);
 
     gtk_container_add(GTK_CONTAINER(window), GTK_WIDGET(web_view));
 
@@ -19,4 +21,5 @@ int main(int argc, char *argv[]) {
     gtk_main();
 
     return 0;
+
 }
