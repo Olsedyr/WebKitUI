@@ -1,7 +1,12 @@
 #include <gtk/gtk.h>
 #include <webkit2/webkit2.h>
+#include <glib.h>
 
 int main(int argc, char *argv[]) {
+    // Force X11 backend and default display
+    g_setenv("GDK_BACKEND", "x11", TRUE);
+    g_setenv("DISPLAY", ":0", TRUE);  // Fallback to default display
+
     gtk_init(&argc, &argv);
 
     GtkWidget *window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
@@ -20,6 +25,7 @@ int main(int argc, char *argv[]) {
     gtk_widget_show_all(window);
     gtk_main();
 
+    g_free(uri);
+    g_free(path);
     return 0;
-
 }

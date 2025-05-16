@@ -2,5 +2,5 @@ services:
   builder:
     build: .
     volumes:
-      - .:/app
-    command: /app/build.sh
+      - .:/build
+    command: /build/build.sh
