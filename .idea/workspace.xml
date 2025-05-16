@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="efc159a8-86bf-48a2-832a-6e7975b0e5f1" name="Changes" comment="">
+    <list default="true" id="e46204b3-9049-45c4-88bf-b7e2b745aac0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/etc/fonts/fonts.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/libs/lib/i386-linux-gnu/libEGL.so.1" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/libs/lib/i386-linux-gnu/libGL.so.1" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/libs/lib/i386-linux-gnu/libGLX.so.0" beforeDir="false" />
@@ -136,54 +140,52 @@
       <change beforePath="$PROJECT_DIR$/dist/libs/lib/x86_64-linux-gnu/libpango-1.0.so.0" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/libs/lib/x86_64-linux-gnu/libpangocairo-1.0.so.0" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/libs/lib/x86_64-linux-gnu/libwebkit2gtk-4.0.so.37" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/minimal-ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/minimal-ui" beforeDir="false" afterPath="$PROJECT_DIR$/dist/minimal-ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/share/glib-2.0/schemas/gschemas.compiled" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/installer/bundle.tar.xz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/installer/install.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/minimal-ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/installer/bundle.tar.xz" beforeDir="false" afterPath="$PROJECT_DIR$/installer/bundle.tar.xz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minimal-ui" beforeDir="false" afterPath="$PROJECT_DIR$/minimal-ui" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dockerfile" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Test" />
+        <entry key="$PROJECT_DIR$" value="Test_bundle" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 8
-}</component>
-  <component name="ProjectId" id="2x5Uv8ohzRqc8RUR16S5encw39S" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2xB37N5emItzc1b6DdtM2HKkjaj" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Test__bundle&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Test__bundle__docker",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Users\olsed\Documents\GitHub\WebKitUI\dist" />
-      <recent name="D:\Users\olsed\Documents\GitHub\WebKitUI" />
-    </key>
-  </component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -195,12 +197,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="efc159a8-86bf-48a2-832a-6e7975b0e5f1" name="Changes" comment="" />
-      <created>1747227659436</created>
+      <changelist id="e46204b3-9049-45c4-88bf-b7e2b745aac0" name="Changes" comment="" />
+      <created>1747397474435</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1747227659436</updated>
-      <workItem from="1747227660884" duration="18604000" />
+      <updated>1747397474435</updated>
+      <workItem from="1747397475933" duration="6275000" />
     </task>
     <servers />
   </component>
