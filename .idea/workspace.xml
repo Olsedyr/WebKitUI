@@ -6,6 +6,124 @@
   <component name="ChangeListManager">
     <list default="true" id="e46204b3-9049-45c4-88bf-b7e2b745aac0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.sh" beforeDir="false" afterPath="$PROJECT_DIR$/build.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libEGL.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libGL.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libX11-xcb.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libX11.so.6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libXau.so.6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libXcomposite.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libXcursor.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libXdamage.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libXdmcp.so.6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libXext.so.6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libXfixes.so.3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libXi.so.6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libXinerama.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libXrandr.so.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libXrender.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libXxf86vm.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libatk-1.0.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libatk-bridge-2.0.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libatspi.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libboost_filesystem.so.1.58.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libboost_system.so.1.58.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libc.so.6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libcairo-gobject.so.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libcairo.so.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libcapnp-0.5.3.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libdatrie.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libdbus-1.so.3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libdl.so.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libdrm.so.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libenchant.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libepoxy.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libexpat.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libffi.so.6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libfontconfig.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libfreetype.so.6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libgbm.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libgcc_s.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libgcrypt.so.20" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libgdk-3.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libgdk_pixbuf-2.0.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libgio-2.0.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libglapi.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libglib-2.0.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libgmodule-2.0.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libgobject-2.0.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libgpg-error.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libgraphite2.so.3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libgstapp-1.0.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libgstaudio-1.0.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libgstbase-1.0.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libgstfft-1.0.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libgstpbutils-1.0.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libgstreamer-1.0.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libgsttag-1.0.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libgstvideo-1.0.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libgtk-3.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libharfbuzz-icu.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libharfbuzz.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libhyphen.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libicudata.so.55" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libicui18n.so.55" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libicuuc.so.55" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libjavascriptcoregtk-4.0.so.18" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libjpeg.so.8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libkj-0.5.3.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/liblzma.so.5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libm.so.6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libmirclient.so.9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libmircommon.so.7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libmircore.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libmirprotobuf.so.3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libnotify.so.4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/liborc-0.4.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libpango-1.0.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libpangocairo-1.0.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libpangoft2-1.0.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libpcre.so.3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libpixman-1.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libpng12.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libprotobuf-lite.so.9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libpthread.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libresolv.so.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/librt.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libsecret-1.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libselinux.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libsoup-2.4.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libsqlite3.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libstdc++.so.6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libsystemd.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libthai.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libwayland-client.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libwayland-cursor.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libwayland-egl.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libwayland-server.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libwebkit2gtk-4.0.so.37" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libwebp.so.5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libwebpdemux.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libxcb-dri2.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libxcb-dri3.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libxcb-glx.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libxcb-present.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libxcb-render.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libxcb-shm.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libxcb-sync.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libxcb-xfixes.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libxcb.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libxkbcommon.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libxml2.so.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libxshmfence.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libxslt.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libz.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/minimal-ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minimal-ui" beforeDir="false" afterPath="$PROJECT_DIR$/minimal-ui" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,19 +153,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Test__bundle__docker&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Docker__works__xserver",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -65,7 +184,7 @@
       <option name="presentableId" value="Default" />
       <updated>1747397474435</updated>
       <workItem from="1747397475933" duration="7771000" />
-      <workItem from="1747645776614" duration="282000" />
+      <workItem from="1747645776614" duration="35755000" />
     </task>
     <servers />
   </component>
