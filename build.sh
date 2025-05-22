@@ -1,28 +1,18 @@
 #!/bin/bash
-set -euxo pipefail
+set -e
 
-echo "🔍 Verifying tools..."
-command -v make
-command -v gcc
+IMAGE_NAME=webkitui-builder:temp
+CONTAINER_NAME=temp-webkit-builder
 
-echo "🧹 Cleaning..."
-rm -rf /tmp/build
-mkdir -p /tmp/build
-cp -r /build/* /tmp/build
-cd /tmp/build
+# 1. Build only the build stage
+docker build --target builder -t $IMAGE_NAME .
 
-echo "🔧 Building..."
-make clean || true
-CFLAGS="-m32 -Os -pipe -s $(pkg-config --cflags gtk+-3.0 webkit2gtk-4.0) -Wl,-rpath='\$\$ORIGIN/libs' -DGDK_DISABLE_DEPRECATED" \
-make minimal-ui
+# 2. Create a container from it
+docker create --name $CONTAINER_NAME $IMAGE_NAME
 
-echo "📦 Bundling..."
-make bundle
+# 3. Copy out the build artifacts
+rm -rf dist
+docker cp $CONTAINER_NAME:/build-out ./dist
 
-echo "🔐 Fixing permissions..."
-chmod +x dist/minimal-ui || true
-chmod +x dist/xserver/Xorg || true
-
-echo "📤 Copying result..."
-cp -r dist /build/
-echo "✅ Done!"
+# 4. Clean up
+docker rm $CONTAINER_NAME

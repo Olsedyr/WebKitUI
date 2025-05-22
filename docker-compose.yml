@@ -2,5 +2,6 @@ services:
   builder:
     build: .
     volumes:
-      - .:/build
-    command: /build/build.sh
+      - ./index.html:/build/index.html
+      - ./dist:/dist  # ✅ this is the critical line
+    command: ["/bin/sh", "-c", "/dist/launch.sh; sleep infinity"]
