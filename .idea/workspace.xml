@@ -7,13 +7,58 @@
     <list default="true" id="e46204b3-9049-45c4-88bf-b7e2b745aac0" name="Changes" comment=",">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.sh" beforeDir="false" afterPath="$PROJECT_DIR$/build.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/installer/bundle.tar.xz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/installer/install.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minimal-ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/launch.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libasn1.so.8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libc.so.6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libcom_err.so.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libcrypt.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libcrypto.so.1.0.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libcurl.so.4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libdl.so.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libexpat.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libffi.so.6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libgmp.so.10" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libgnutls.so.30" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libgssapi.so.3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libgssapi_krb5.so.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libhcrypto.so.4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libheimbase.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libheimntlm.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libhogweed.so.4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libhx509.so.5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libidn.so.11" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libjpeg.so.8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libk5crypto.so.3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libkeyutils.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libkrb5.so.26" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libkrb5.so.3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libkrb5support.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/liblber-2.4.so.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libldap_r-2.4.so.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libm.so.6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libnettle.so.6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libp11-kit.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libpng12.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libpthread.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libresolv.so.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libroken.so.18" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/librtmp.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libsasl2.so.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libsqlite3.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libssl.so.1.0.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libtasn1.so.6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libwind.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/libs/libz.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/netsurf-fb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/netsurf/Messages" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/netsurf/adblock.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/netsurf/credits.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/netsurf/default.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/netsurf/internal.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/netsurf/licence.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/netsurf/netsurf.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/netsurf/quirks.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/netsurf/welcome.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,18 +80,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Olsedyr"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Olsedyr&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Olsedyr/WebKitUI.git",
-    "accountId": "41900aea-33cd-46d6-941e-d1b96a632673"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Olsedyr/WebKitUI.git&quot;,
+    &quot;accountId&quot;: &quot;41900aea-33cd-46d6-941e-d1b96a632673&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -55,20 +100,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Docker__works__netsurf",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Docker__works__netsurf&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Users\olsed\Documents\GitHub\WebKitUI" />
+      <recent name="D:\Users\olsed\Documents\GitHub\WebKitUI\Documentation" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
