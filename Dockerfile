@@ -12,7 +12,7 @@ RUN dpkg --add-architecture i386 && \
         build-essential gcc-multilib git wget flex bison gperf \
         gettext libcurl4-openssl-dev:i386 \
         libfontconfig1-dev:i386 \
-        libutf8proc-dev:i386 && \
+        libutf8proc-dev:i386 patchelf && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -106,10 +106,13 @@ RUN wget https://download.netsurf-browser.org/netsurf/releases/source/netsurf-3.
 RUN mkdir -p /build-out/libs && \
     cp ${PREFIX}/bin/netsurf-fb /build-out/ && \
     cp -r ${PREFIX}/share/netsurf /build-out/ && \
-    # Copy all required libraries
-    ldd ${PREFIX}/bin/netsurf-fb | awk '/=>/ {print $3}' | grep -v '^$' | xargs -I{} cp -v {} /build-out/libs/ && \
+    # Fix library copying with proper filtering
+    ldd ${PREFIX}/bin/netsurf-fb | awk '/=>/ {print $3}' | grep -v '^$' | grep '/' | xargs -I{} cp -v {} /build-out/libs/ && \
+    # Set RPATH in the executable
+    patchelf --set-rpath '$ORIGIN/libs' /build-out/netsurf-fb && \
     # Copy essential config files
     cp ${PREFIX}/etc/netsurf/* /build-out/ 2>/dev/null || :
+
 # Create dist structure with ALL required files
 RUN mkdir -p /build-out/WebKitUI/dist && \
     # Executable
@@ -130,10 +133,11 @@ exec "$SCRIPT_DIR/netsurf-fb" "file://$SCRIPT_DIR/index.html"' > /build-out/WebK
     chmod +x /build-out/WebKitUI/dist/launch.sh && \
     # Create minimal test page
     echo '<html><body><h1>NetSurf Works!</h1></body></html>' > /build-out/WebKitUI/dist/index.html
+
 # ------------------------------------------------------------
 #  Runtime stage
 # ------------------------------------------------------------
-FROM scratch
+FROM busybox
 
 COPY --from=builder /build-out/WebKitUI/dist /WebKitUI/dist
 WORKDIR /WebKitUI/dist
