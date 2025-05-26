@@ -1,11 +1,15 @@
 #!/bin/bash
+IMAGE_NAME=netsurf-builder:latest
+CONTAINER_NAME=netsurf-temp-copy
 
-# Step 1: Build the Docker image
-docker build -t netsurf-min .
+# Build the image
+docker build -t $IMAGE_NAME .
 
-# Step 2: Create the dist directory if it doesn't exist
-mkdir -p ./WebKitUI/dist
+# Run container in detached mode (so it exists but does nothing)
+docker create --name $CONTAINER_NAME $IMAGE_NAME
 
-# Step 3: Run the container and copy out the dist directory
-docker run --rm -v $(pwd)/WebKitUI/dist:/out --entrypoint "" netsurf-min \
-    cp -r /WebKitUI/dist/* /out/
+# Copy the build output folder to local host
+docker cp $CONTAINER_NAME:/build-out/WebKitUI/dist ./dist
+
+# Remove temporary container
+docker rm $CONTAINER_NAME
