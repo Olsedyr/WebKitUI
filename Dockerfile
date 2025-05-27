@@ -165,6 +165,7 @@ RUN find /build-out/libs -type f -name "*.so*" | while read lib; do \
 # Final verification
 RUN echo "=== Final ldd of netsurf-fb ===" && ldd /build-out/netsurf-fb
 
+
 # Copy and run patch script BEFORE creating dist folder
 COPY patch-libs.sh /patch-libs.sh
 RUN chmod +x /patch-libs.sh && cd /build-out && /patch-libs.sh
@@ -174,4 +175,6 @@ RUN mkdir -p /build-out/WebKitUI/dist && \
     cp /build-out/netsurf-fb /build-out/WebKitUI/dist/netsurf && \
     cp -r /build-out/libs /build-out/WebKitUI/dist/ && \
     cp -r /build-out/share /build-out/WebKitUI/dist/ && \
-    printf '#!/bin/sh\nSCRIPT_DIR=$(dirname "$(readlink -f "$0")")\nexport LD_LIBRARY_PATH=$SCRIPT_DIR/libs:$LD_LIBRARY_PATH\nexport NETSURFRES="$SCRIPT_DIR/share/netsurf"\nexec "$SCRIPT_DIR/netsurf"
+    printf '#!/bin/sh\nSCRIPT_DIR=$(dirname "$(readlink -f "$0")")\nexport LD_LIBRARY_PATH=$SCRIPT_DIR/libs:$LD_LIBRARY_PATH\nexport NETSURFRES="$SCRIPT_DIR/share/netsurf"\nexec "$SCRIPT_DIR/netsurf" "file://$SCRIPT_DIR/index.html"\n' > /build-out/WebKitUI/dist/launch.sh && \
+    chmod +x /build-out/WebKitUI/dist/launch.sh && \
+    echo '<html><body><h1>NetSurf Framebuffer Works!</h1></body></html>' > /build-out/WebKitUI/dist/index.html

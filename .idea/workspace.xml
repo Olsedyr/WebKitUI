@@ -5,54 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e46204b3-9049-45c4-88bf-b7e2b745aac0" name="Changes" comment=",">
-      <change afterPath="$PROJECT_DIR$/patch-libs.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build-and-copy.sh" beforeDir="false" afterPath="$PROJECT_DIR$/build-and-copy.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/launch.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libasn1.so.8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libc.so.6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libcom_err.so.2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libcrypt.so.1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libcrypto.so.1.0.0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libcurl.so.4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libdl.so.2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libexpat.so.1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libffi.so.6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libgmp.so.10" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libgnutls.so.30" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libgssapi.so.3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libgssapi_krb5.so.2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libhcrypto.so.4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libheimbase.so.1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libheimntlm.so.0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libhogweed.so.4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libhx509.so.5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libidn.so.11" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libjpeg.so.8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libk5crypto.so.3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libkeyutils.so.1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libkrb5.so.26" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libkrb5.so.3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libkrb5support.so.0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/liblber-2.4.so.2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libldap_r-2.4.so.2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libm.so.6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libnettle.so.6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libp11-kit.so.0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libpng12.so.0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libpthread.so.0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libresolv.so.2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libroken.so.18" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/librtmp.so.1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libsasl2.so.2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libsqlite3.so.0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libssl.so.1.0.0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libtasn1.so.6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libwind.so.0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/libs/libz.so.1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/netsurf-fb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/patch-libs.sh" beforeDir="false" afterPath="$PROJECT_DIR$/patch-libs.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +88,7 @@
       <updated>1747397474435</updated>
       <workItem from="1747397475933" duration="7771000" />
       <workItem from="1747645776614" duration="50370000" />
-      <workItem from="1748242021350" duration="22772000" />
+      <workItem from="1748242021350" duration="25816000" />
     </task>
     <task id="LOCAL-00001" summary=",">
       <option name="closed" value="true" />
