@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.4
 FROM --platform=linux/386 i386/debian:buster-slim AS builder
 
-# Install build dependencies
+# Install build dependencies AND runtime libraries
 RUN apt-get update && apt-get install -y \
     build-essential \
     git \
@@ -18,6 +18,19 @@ RUN apt-get update && apt-get install -y \
     gperf \
     libcurl4-openssl-dev \
     libjpeg-dev \
+    # Add missing runtime libraries for bundling
+    libnghttp2-14 \
+    librtmp1 \
+    libssh2-1 \
+    libpsl5 \
+    libldap-2.4-2 \
+    libidn2-0 \
+    libunistring2 \
+    libkrb5-3 \
+    libgssapi-krb5-2 \
+    libk5crypto3 \
+    libcom-err2 \
+    libkeyutils1 \
     && rm -rf /var/lib/apt/lists/*
 
 ENV PREFIX=/opt/netsurf
@@ -92,25 +105,25 @@ RUN cp $PREFIX/bin/netsurf-fb . && \
     cp -r $PREFIX/share/netsurf ./share && \
     echo '<html><body><h1>NetSurf Works!</h1></body></html>' > index.html
 
-# Copy all required shared libraries into the current directory (flattened)
-RUN ldd $PREFIX/bin/netsurf-fb | awk '/=>/ {print $3}' | grep -v '^$' | xargs -I{} cp -n {} . || true
+# Copy all dependencies using ldd output
+RUN ldd ./netsurf-fb | awk '/=>/ {print $3}' | grep -v '^$' | xargs -I{} cp -L -n {} . || true
 
-# Manually copy additional dependencies that ldd might miss or are unresolved
+# Manually ensure critical libraries are included
 RUN for lib in \
     libnghttp2.so.14 \
     librtmp.so.1 \
     libssh2.so.1 \
     libpsl.so.5 \
-    libgssapi_krb5.so.2 \
-    libkrb5.so.3 \
-    libk5crypto.so.3 \
     libldap_r-2.4.so.2 \
     liblber-2.4.so.2 \
     libidn2.so.0 \
     libunistring.so.2 \
-    libpthread.so.0 \
-    libdl.so.2; do \
-    find /usr/lib /lib -name "$lib" -exec cp -n {} /dist \; || echo "Missing: $lib"; \
+    libgssapi_krb5.so.2 \
+    libkrb5.so.3 \
+    libk5crypto.so.3 \
+    libcom_err.so.2 \
+    libkeyutils.so.1; do \
+    find /usr/lib /lib -name "$lib" -exec cp -L -n {} . \; ; \
     done
 
 # Copy dynamic linker and patch binary
