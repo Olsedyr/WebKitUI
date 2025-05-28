@@ -86,23 +86,35 @@ RUN sed -i '1i #ifdef NETSURF_USE_CURL' content/fetchers/curl.h && \
         NETSURF_USE_JPEG=NO && \
     make install TARGET=framebuffer PREFIX=$PREFIX
 
-
-
-
-
-
-
-
-
 # Bundle everything into dist/
 WORKDIR /dist
 RUN cp $PREFIX/bin/netsurf-fb . && \
     cp -r $PREFIX/share/netsurf ./share && \
     echo '<html><body><h1>NetSurf Works!</h1></body></html>' > index.html
 
-# Copy required libraries
-RUN ldd netsurf-fb | awk '/=>/ {print $3}' | xargs -I{} cp --parents {} . && \
-    cp /lib/ld-linux.so.2 . && \
+# Copy all required shared libraries into the current directory (flattened)
+RUN ldd $PREFIX/bin/netsurf-fb | awk '/=>/ {print $3}' | grep -v '^$' | xargs -I{} cp -n {} . || true
+
+# Manually copy additional dependencies that ldd might miss or are unresolved
+RUN for lib in \
+    libnghttp2.so.14 \
+    librtmp.so.1 \
+    libssh2.so.1 \
+    libpsl.so.5 \
+    libgssapi_krb5.so.2 \
+    libkrb5.so.3 \
+    libk5crypto.so.3 \
+    libldap_r-2.4.so.2 \
+    liblber-2.4.so.2 \
+    libidn2.so.0 \
+    libunistring.so.2 \
+    libpthread.so.0 \
+    libdl.so.2; do \
+    find /usr/lib /lib -name "$lib" -exec cp -n {} /dist \; || echo "Missing: $lib"; \
+    done
+
+# Copy dynamic linker and patch binary
+RUN cp /lib/ld-linux.so.2 . && \
     patchelf --set-interpreter ./ld-linux.so.2 netsurf-fb && \
     patchelf --set-rpath '$ORIGIN' netsurf-fb
 
