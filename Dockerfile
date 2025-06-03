@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.4
-FROM --platform=linux/386 i386/debian:buster-slim AS builder
+FROM i386/ubuntu:16.04 AS builder
 
 # Install required system dependencies + imagemagick
 RUN apt-get update && apt-get install -y \
@@ -22,20 +22,17 @@ RUN apt-get update && apt-get install -y \
     libnghttp2-14 \
     librtmp1 \
     libssh2-1 \
-    libpsl5 \
     libldap-2.4-2 \
     libidn2-0 \
-    libunistring2 \
+    libunistring0 \
     libkrb5-3 \
     libgssapi-krb5-2 \
     libk5crypto3 \
-    libcom-err2 \
     libkeyutils1 \
     libfuse2 \
     desktop-file-utils \
     xz-utils \
     python3 \
-    libgpgme-dev \
     libassuan-dev \
     imagemagick \
     && rm -rf /var/lib/apt/lists/*

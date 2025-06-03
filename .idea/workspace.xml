@@ -7,6 +7,7 @@
     <list default="true" id="e46204b3-9049-45c4-88bf-b7e2b745aac0" name="Changes" comment=",">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb-i386.AppImage" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +94,7 @@
       <workItem from="1748242021350" duration="26562000" />
       <workItem from="1748420769506" duration="747000" />
       <workItem from="1748421887154" duration="9661000" />
-      <workItem from="1748933262354" duration="19487000" />
+      <workItem from="1748933262354" duration="23004000" />
     </task>
     <task id="LOCAL-00001" summary=",">
       <option name="closed" value="true" />
