@@ -6,55 +6,56 @@
   <component name="ChangeListManager">
     <list default="true" id="e46204b3-9049-45c4-88bf-b7e2b745aac0" name="Changes" comment=",">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/launch.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/ld-linux.so.2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libc.so.6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libcom_err.so.2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libcrypto.so.1.1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libcurl.so.4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libdl.so.2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libexpat.so.1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libffi.so.6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libgcrypt.so.20" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libgmp.so.10" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libgnutls.so.30" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libgpg-error.so.0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libgssapi_krb5.so.2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libhogweed.so.4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libidn2.so.0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libjpeg.so.62" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libk5crypto.so.3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libkeyutils.so.1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libkrb5.so.3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libkrb5support.so.0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/liblber-2.4.so.2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libldap_r-2.4.so.2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libm.so.6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libnettle.so.6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libnghttp2.so.14" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libp11-kit.so.0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libpng16.so.16" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libpsl.so.5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libpthread.so.0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libresolv.so.2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/librtmp.so.1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libsasl2.so.2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libssh2.so.1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libssl.so.1.1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libtasn1.so.6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libunistring.so.2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/libz.so.1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/netsurf-fb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/share/Messages" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/share/adblock.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/share/credits.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/share/default.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/share/internal.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/share/licence.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/share/netsurf.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/share/quirks.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-dist/share/welcome.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/launch.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/ld-linux.so.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libc.so.6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libcom_err.so.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libcrypto.so.1.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libcurl.so.4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libdl.so.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libexpat.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libffi.so.6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libgcrypt.so.20" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libgmp.so.10" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libgnutls.so.30" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libgpg-error.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libgssapi_krb5.so.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libhogweed.so.4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libidn2.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libjpeg.so.62" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libk5crypto.so.3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libkeyutils.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libkrb5.so.3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libkrb5support.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/liblber-2.4.so.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libldap_r-2.4.so.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libm.so.6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libnettle.so.6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libnghttp2.so.14" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libp11-kit.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libpng16.so.16" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libpsl.so.5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libpthread.so.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libresolv.so.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/librtmp.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libsasl2.so.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libssh2.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libssl.so.1.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libtasn1.so.6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libunistring.so.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/libz.so.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/netsurf-fb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/share/Messages" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/share/adblock.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/share/credits.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/share/default.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/share/internal.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/share/licence.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/share/netsurf.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/share/quirks.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/netsurf-fb/share/welcome.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +142,7 @@
       <workItem from="1748242021350" duration="26562000" />
       <workItem from="1748420769506" duration="747000" />
       <workItem from="1748421887154" duration="9661000" />
-      <workItem from="1748933262354" duration="1841000" />
+      <workItem from="1748933262354" duration="10347000" />
     </task>
     <task id="LOCAL-00001" summary=",">
       <option name="closed" value="true" />

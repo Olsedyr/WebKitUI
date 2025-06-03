@@ -1,11 +1,12 @@
 # syntax=docker/dockerfile:1.4
 FROM --platform=linux/386 i386/debian:buster-slim AS builder
 
-# Install build dependencies AND runtime libraries
+# Install required system dependencies + imagemagick
 RUN apt-get update && apt-get install -y \
     build-essential \
     git \
     wget \
+    curl \
     ca-certificates \
     pkg-config \
     patchelf \
@@ -18,7 +19,6 @@ RUN apt-get update && apt-get install -y \
     gperf \
     libcurl4-openssl-dev \
     libjpeg-dev \
-    # Add missing runtime libraries for bundling
     libnghttp2-14 \
     librtmp1 \
     libssh2-1 \
@@ -31,6 +31,13 @@ RUN apt-get update && apt-get install -y \
     libk5crypto3 \
     libcom-err2 \
     libkeyutils1 \
+    libfuse2 \
+    desktop-file-utils \
+    xz-utils \
+    python3 \
+    libgpgme-dev \
+    libassuan-dev \
+    imagemagick \
     && rm -rf /var/lib/apt/lists/*
 
 ENV PREFIX=/opt/netsurf
@@ -40,12 +47,18 @@ ENV LD_LIBRARY_PATH=$PREFIX/lib:$LD_LIBRARY_PATH
 
 WORKDIR /build
 
-# Buildsystem
-RUN wget -O buildsystem.tar.gz https://git.netsurf-browser.org/buildsystem.git/snapshot/buildsystem-release/1.10.tar.gz && \
-    tar xzf buildsystem.tar.gz && \
-    cd buildsystem-release/1.10 && make install PREFIX=$PREFIX
+# Install CMake 3.25.2
+RUN wget https://cmake.org/files/v3.25/cmake-3.25.2.tar.gz && \
+    tar -xzf cmake-3.25.2.tar.gz && \
+    cd cmake-3.25.2 && \
+    ./bootstrap --prefix=/usr/local && \
+    make -j$(nproc) && make install && \
+    cd .. && rm -rf cmake-3.25.2*
 
-# Download and extract all required libraries
+# Buildsystem and source fetching
+RUN wget -O buildsystem.tar.gz https://git.netsurf-browser.org/buildsystem.git/snapshot/buildsystem-release/1.10.tar.gz && \
+    tar xzf buildsystem.tar.gz && cd buildsystem-release/1.10 && make install PREFIX=$PREFIX
+
 RUN wget https://download.netsurf-browser.org/libs/releases/libwapcaplet-0.4.3-src.tar.gz && tar xzf libwapcaplet-0.4.3-src.tar.gz && \
     wget https://download.netsurf-browser.org/libs/releases/libparserutils-0.2.5-src.tar.gz && tar xzf libparserutils-0.2.5-src.tar.gz && \
     wget https://download.netsurf-browser.org/libs/releases/libcss-0.9.2-src.tar.gz && tar xzf libcss-0.9.2-src.tar.gz && \
@@ -57,80 +70,64 @@ RUN wget https://download.netsurf-browser.org/libs/releases/libwapcaplet-0.4.3-s
     wget https://download.netsurf-browser.org/libs/releases/libnsfb-0.2.2-src.tar.gz && tar xzf libnsfb-0.2.2-src.tar.gz && \
     wget https://download.netsurf-browser.org/netsurf/releases/source/netsurf-3.11-src.tar.gz && tar xzf netsurf-3.11-src.tar.gz
 
-# Build and install libraries in correct order
 WORKDIR /build/libwapcaplet-0.4.3
 RUN make PREFIX=$PREFIX && make install PREFIX=$PREFIX
-
 WORKDIR /build/libparserutils-0.2.5
 RUN make PREFIX=$PREFIX && make install PREFIX=$PREFIX
-
 WORKDIR /build/libcss-0.9.2
 RUN make PREFIX=$PREFIX && make install PREFIX=$PREFIX
-
 WORKDIR /build/libhubbub-0.3.8
 RUN make PREFIX=$PREFIX && make install PREFIX=$PREFIX
-
 WORKDIR /build/libdom-release/0.4.2
 RUN make PREFIX=$PREFIX && make install PREFIX=$PREFIX
-
 WORKDIR /build/libnsutils-0.1.1
 RUN make PREFIX=$PREFIX && make install PREFIX=$PREFIX
-
 WORKDIR /build/libutf8proc-2.4.0-1
 RUN make PREFIX=$PREFIX && make install PREFIX=$PREFIX
-
 WORKDIR /build/nsgenbind-0.9
 RUN make PREFIX=$PREFIX && make install PREFIX=$PREFIX
-
 WORKDIR /build/libnsfb-0.2.2
 RUN make PREFIX=$PREFIX && make install PREFIX=$PREFIX
 
+# Build netsurf framebuffer
 WORKDIR /build/netsurf-3.11
-RUN sed -i '1i #ifdef NETSURF_USE_CURL' content/fetchers/curl.h && \
-    echo '#endif' >> content/fetchers/curl.h && \
-    echo '/* stub curl.c */' > content/fetchers/curl.c && \
-    make TARGET=framebuffer PREFIX=$PREFIX \
-        NETSURF_USE_SSL=NO \
-        NETSURF_USE_VIDEO=NO \
-        NETSURF_USE_MOZJS=NO \
-        NETSURF_USE_JS=NO \
-        NETSURF_USE_CURL=NO \
-        NETSURF_USE_FETCH_CURL=NO \
-        NETSURF_USE_JPEG=NO && \
+RUN sed -i '1i #ifdef NETSURF_USE_CURL' content/fetchers/curl.h && echo '#endif' >> content/fetchers/curl.h && echo '/* stub curl.c */' > content/fetchers/curl.c && \
+    make TARGET=framebuffer PREFIX=$PREFIX NETSURF_USE_SSL=NO NETSURF_USE_VIDEO=NO NETSURF_USE_MOZJS=NO NETSURF_USE_JS=NO NETSURF_USE_CURL=NO NETSURF_USE_FETCH_CURL=NO NETSURF_USE_JPEG=NO && \
     make install TARGET=framebuffer PREFIX=$PREFIX
 
-# Bundle everything into dist/
-WORKDIR /dist
-RUN cp $PREFIX/bin/netsurf-fb . && \
-    cp -r $PREFIX/share/netsurf ./share && \
-    echo '<html><body><h1>NetSurf Works!</h1></body></html>' > index.html
+# Create AppDir
+WORKDIR /AppDir
+RUN mkdir -p usr/bin usr/lib usr/share/netsurf && \
+    cp $PREFIX/bin/netsurf-fb usr/bin/ && \
+    cp -r $PREFIX/share/netsurf/* usr/share/netsurf/ && \
+    echo '<html><body><h1>NetSurf Works!</h1></body></html>' > usr/share/netsurf/index.html
 
-# Copy all dependencies using ldd output
-RUN ldd ./netsurf-fb | awk '/=>/ {print $3}' | grep -v '^$' | xargs -I{} cp -L -n {} . || true
+# Generate dummy icon
+RUN convert -size 256x256 xc:none netsurf.png
 
-# Manually ensure critical libraries are included
-RUN for lib in \
-    libnghttp2.so.14 \
-    librtmp.so.1 \
-    libssh2.so.1 \
-    libpsl.so.5 \
-    libldap_r-2.4.so.2 \
-    liblber-2.4.so.2 \
-    libidn2.so.0 \
-    libunistring.so.2 \
-    libgssapi_krb5.so.2 \
-    libkrb5.so.3 \
-    libk5crypto.so.3 \
-    libcom_err.so.2 \
-    libkeyutils.so.1; do \
-    find /usr/lib /lib -name "$lib" -exec cp -L -n {} . \; ; \
+WORKDIR /AppDir/usr/lib
+RUN ldd ../bin/netsurf-fb | awk '/=>/ {print $3}' | grep -v '^$' | xargs -I{} cp -L -n {} . || true && \
+    for lib in libnghttp2.so.14 librtmp.so.1 libssh2.so.1 libpsl.so.5 libldap_r-2.4.so.2 liblber-2.4.so.2 libidn2.so.0 libunistring.so.2 libgssapi_krb5.so.2 libkrb5.so.3 libk5crypto.so.3 libcom_err.so.2 libkeyutils.so.1; do \
+        find /usr/lib /lib -name "$lib" -exec cp -L -n {} . \; ; \
     done
 
-# Copy dynamic linker and patch binary
 RUN cp /lib/ld-linux.so.2 . && \
-    patchelf --set-interpreter ./ld-linux.so.2 netsurf-fb && \
-    patchelf --set-rpath '$ORIGIN' netsurf-fb
+    patchelf --set-interpreter ./ld-linux.so.2 ../bin/netsurf-fb && \
+    patchelf --set-rpath '$ORIGIN/../lib' ../bin/netsurf-fb
 
-# Create launch script
-RUN echo '#!/bin/sh\nexport LD_LIBRARY_PATH=.\nexport NETSURFRES=./share/netsurf\nexec ./netsurf-fb file://./index.html' > launch.sh && \
-    chmod +x launch.sh
+WORKDIR /AppDir
+RUN echo '#!/bin/sh\nexport LD_LIBRARY_PATH=$(dirname "$0")/usr/lib\nexport NETSURFRES=$(dirname "$0")/usr/share/netsurf\nexec $(dirname "$0")/usr/bin/netsurf-fb file://$(dirname "$0")/usr/share/netsurf/index.html' > AppRun && chmod +x AppRun
+
+RUN echo '[Desktop Entry]\nType=Application\nName=NetSurf FB\nExec=netsurf-fb\nIcon=netsurf\nCategories=Network;WebBrowser;' > netsurf.desktop
+
+# AppImage tooling
+WORKDIR /appimagetool_build
+RUN wget https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-i686.AppImage && chmod +x appimagetool-i686.AppImage
+
+WORKDIR /
+RUN /appimagetool_build/appimagetool-i686.AppImage --appimage-extract && \
+    ./squashfs-root/AppRun /AppDir /netsurf-fb-i386.AppImage
+
+# Export result
+FROM scratch AS export-stage
+COPY --from=builder /netsurf-fb-i386.AppImage /netsurf-fb-i386.AppImage
