@@ -105,25 +105,52 @@ RUN mkdir -p usr/bin usr/lib usr/share/netsurf && \
 # Generate dummy icon
 RUN convert -size 256x256 xc:none netsurf.png
 
+# Improved library bundling with recursive dependency resolution
 WORKDIR /AppDir/usr/lib
-RUN ldd ../bin/netsurf-fb | awk '/=>/ {print $3}' | grep -v '^$' | xargs -I{} cp -L -n {} . || true && \
-    for lib in libnghttp2.so.14 librtmp.so.1 libssh2.so.1 libpsl.so.5 libldap_r-2.4.so.2 liblber-2.4.so.2 libidn2.so.0 libunistring.so.2 libgssapi_krb5.so.2 libkrb5.so.3 libk5crypto.so.3 libcom_err.so.2 libkeyutils.so.1; do \
-        find /usr/lib /lib -name "$lib" -exec cp -L -n {} . \; ; \
+
+# Copy dynamic linker
+RUN cp /lib/ld-linux.so.2 .
+
+# Copy direct dependencies
+RUN ldd ../bin/netsurf-fb | awk '/=> \// {print $3}' | xargs -I{} cp -L -n {} . || true
+
+# Recursive dependency copying (handles transitive dependencies)
+RUN while true; do \
+        missing=0; \
+        for lib in *.so*; do \
+            deps=$(ldd "$lib" 2>/dev/null | awk '/=> \// {print $3}' | grep -v '^$' || true); \
+            for dep in $deps; do \
+                base=$(basename "$dep"); \
+                if [ -f "$dep" ] && [ ! -f "$base" ]; then \
+                    cp -L -n "$dep" .; \
+                    missing=1; \
+                fi; \
+            done; \
+        done; \
+        [ "$missing" = 0 ] && break; \
     done
 
-RUN cp /lib/ld-linux.so.2 . && \
-    patchelf --set-interpreter ./ld-linux.so.2 ../bin/netsurf-fb && \
+# Set RPATH for all libraries to use $ORIGIN
+RUN find . -maxdepth 1 -type f -name '*.so*' -exec patchelf --set-rpath '$ORIGIN' {} \; || true
+
+# Patch main binary
+RUN patchelf --set-interpreter ./ld-linux.so.2 ../bin/netsurf-fb && \
     patchelf --set-rpath '$ORIGIN/../lib' ../bin/netsurf-fb
 
+# Create AppRun script
 WORKDIR /AppDir
-RUN echo '#!/bin/sh\nexport LD_LIBRARY_PATH=$(dirname "$0")/usr/lib\nexport NETSURFRES=$(dirname "$0")/usr/share/netsurf\nexec $(dirname "$0")/usr/bin/netsurf-fb file://$(dirname "$0")/usr/share/netsurf/index.html' > AppRun && chmod +x AppRun
+RUN echo '#!/bin/sh\nexport HERE=$(dirname "$(readlink -f "$0")")\nexport LD_LIBRARY_PATH="$HERE"/usr/lib\nexport NETSURFRES="$HERE"/usr/share/netsurf\nexec "$HERE"/usr/bin/netsurf-fb file://"$HERE"/usr/share/netsurf/index.html' > AppRun && \
+    chmod +x AppRun
 
-RUN echo '[Desktop Entry]\nType=Application\nName=NetSurf FB\nExec=netsurf-fb\nIcon=netsurf\nCategories=Network;WebBrowser;' > netsurf.desktop
+# Create desktop entry
+RUN echo '[Desktop Entry]\nType=Application\nName=NetSurf FB\nExec=AppRun\nIcon=netsurf\nCategories=Network;WebBrowser;' > netsurf.desktop
 
 # AppImage tooling
 WORKDIR /appimagetool_build
-RUN wget https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-i686.AppImage && chmod +x appimagetool-i686.AppImage
+RUN wget https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-i686.AppImage && \
+    chmod +x appimagetool-i686.AppImage
 
+# Build AppImage
 WORKDIR /
 RUN /appimagetool_build/appimagetool-i686.AppImage --appimage-extract && \
     ./squashfs-root/AppRun /AppDir /netsurf-fb-i386.AppImage
