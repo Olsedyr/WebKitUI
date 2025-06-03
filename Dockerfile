@@ -108,13 +108,13 @@ RUN convert -size 256x256 xc:none netsurf.png
 # Improved library bundling with recursive dependency resolution
 WORKDIR /AppDir/usr/lib
 
-# Copy dynamic linker
+# Copy dynamic linker with correct architecture
 RUN cp /lib/ld-linux.so.2 .
 
 # Copy direct dependencies
 RUN ldd ../bin/netsurf-fb | awk '/=> \// {print $3}' | xargs -I{} cp -L -n {} . || true
 
-# Recursive dependency copying (handles transitive dependencies)
+# Recursive dependency copying
 RUN while true; do \
         missing=0; \
         for lib in *.so*; do \
@@ -130,16 +130,20 @@ RUN while true; do \
         [ "$missing" = 0 ] && break; \
     done
 
-# Set RPATH for all libraries to use $ORIGIN
+# Verify all libraries are present
+RUN echo "Verifying libraries:" && \
+    ldd ../bin/netsurf-fb | awk '/not found/ {print "Missing library:", $1}' && \
+    ! ldd ../bin/netsurf-fb | grep -q 'not found'
+
+# Set RPATH for all libraries
 RUN find . -maxdepth 1 -type f -name '*.so*' -exec patchelf --set-rpath '$ORIGIN' {} \; || true
 
-# Patch main binary
-RUN patchelf --set-interpreter ./ld-linux.so.2 ../bin/netsurf-fb && \
-    patchelf --set-rpath '$ORIGIN/../lib' ../bin/netsurf-fb
+# Patch main binary with correct rpath (but don't change interpreter)
+RUN patchelf --set-rpath '$ORIGIN/../lib' ../bin/netsurf-fb
 
-# Create AppRun script
+# Create AppRun script that uses the bundled dynamic linker explicitly
 WORKDIR /AppDir
-RUN echo '#!/bin/sh\nexport HERE=$(dirname "$(readlink -f "$0")")\nexport LD_LIBRARY_PATH="$HERE"/usr/lib\nexport NETSURFRES="$HERE"/usr/share/netsurf\nexec "$HERE"/usr/bin/netsurf-fb file://"$HERE"/usr/share/netsurf/index.html' > AppRun && \
+RUN echo '#!/bin/sh\nexport HERE="$(dirname "$(readlink -f "$0")")"\nexport LD_LIBRARY_PATH="$HERE/usr/lib"\nexport NETSURFRES="$HERE/usr/share/netsurf"\nexec "$HERE/usr/lib/ld-linux.so.2" "$HERE/usr/bin/netsurf-fb" file://"$HERE/usr/share/netsurf/index.html"' > AppRun && \
     chmod +x AppRun
 
 # Create desktop entry
