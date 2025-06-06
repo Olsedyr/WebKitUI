@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.4
 FROM i386/ubuntu:16.04 AS builder
 
-# Install required system dependencies + imagemagick
+# Install dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
     git \
@@ -44,7 +44,7 @@ ENV LD_LIBRARY_PATH=$PREFIX/lib:$LD_LIBRARY_PATH
 
 WORKDIR /build
 
-# Install CMake 3.25.2
+# Install CMake
 RUN wget https://cmake.org/files/v3.25/cmake-3.25.2.tar.gz && \
     tar -xzf cmake-3.25.2.tar.gz && \
     cd cmake-3.25.2 && \
@@ -52,7 +52,7 @@ RUN wget https://cmake.org/files/v3.25/cmake-3.25.2.tar.gz && \
     make -j$(nproc) && make install && \
     cd .. && rm -rf cmake-3.25.2*
 
-# Buildsystem and source fetching
+# Fetch and build buildsystem + dependencies
 RUN wget -O buildsystem.tar.gz https://git.netsurf-browser.org/buildsystem.git/snapshot/buildsystem-release/1.10.tar.gz && \
     tar xzf buildsystem.tar.gz && cd buildsystem-release/1.10 && make install PREFIX=$PREFIX
 
@@ -67,6 +67,7 @@ RUN wget https://download.netsurf-browser.org/libs/releases/libwapcaplet-0.4.3-s
     wget https://download.netsurf-browser.org/libs/releases/libnsfb-0.2.2-src.tar.gz && tar xzf libnsfb-0.2.2-src.tar.gz && \
     wget https://download.netsurf-browser.org/netsurf/releases/source/netsurf-3.11-src.tar.gz && tar xzf netsurf-3.11-src.tar.gz
 
+# Build libraries
 WORKDIR /build/libwapcaplet-0.4.3
 RUN make PREFIX=$PREFIX && make install PREFIX=$PREFIX
 WORKDIR /build/libparserutils-0.2.5
@@ -86,32 +87,33 @@ RUN make PREFIX=$PREFIX && make install PREFIX=$PREFIX
 WORKDIR /build/libnsfb-0.2.2
 RUN make PREFIX=$PREFIX && make install PREFIX=$PREFIX
 
-# Build netsurf framebuffer
+# Build NetSurf framebuffer
 WORKDIR /build/netsurf-3.11
 RUN sed -i '1i #ifdef NETSURF_USE_CURL' content/fetchers/curl.h && echo '#endif' >> content/fetchers/curl.h && echo '/* stub curl.c */' > content/fetchers/curl.c && \
     make TARGET=framebuffer PREFIX=$PREFIX NETSURF_USE_SSL=NO NETSURF_USE_VIDEO=NO NETSURF_USE_MOZJS=NO NETSURF_USE_JS=NO NETSURF_USE_CURL=NO NETSURF_USE_FETCH_CURL=NO NETSURF_USE_JPEG=NO && \
     make install TARGET=framebuffer PREFIX=$PREFIX
 
-# Create AppDir
+# AppDir structure
 WORKDIR /AppDir
-RUN mkdir -p usr/bin usr/lib usr/share/netsurf && \
-    cp $PREFIX/bin/netsurf-fb usr/bin/ && \
-    cp -r $PREFIX/share/netsurf/* usr/share/netsurf/ && \
-    echo '<html><body><h1>NetSurf Works!</h1></body></html>' > usr/share/netsurf/index.html
+RUN mkdir -p usr/bin usr/lib usr/share/netsurf
 
-# Generate dummy icon
+# Copy binary + resources
+RUN cp $PREFIX/bin/netsurf-fb usr/bin/ && \
+    cp -r $PREFIX/share/netsurf/* usr/share/netsurf/
+
+# Generate a test PNG and minimal HTML referencing it
+RUN convert -size 320x240 xc:lightblue usr/share/netsurf/test.png && \
+    echo '<html><body><img src="file:///usr/share/netsurf/test.png"></body></html>' > usr/share/netsurf/index.html
+
+# Create dummy icon
 RUN convert -size 256x256 xc:none netsurf.png
 
-# Improved library bundling with recursive dependency resolution
+# Copy shared libs
 WORKDIR /AppDir/usr/lib
+RUN cp /lib/ld-linux.so.2 . && \
+    ldd ../bin/netsurf-fb | awk '/=> \// {print $3}' | xargs -I{} cp -L -n {} . || true
 
-# Copy dynamic linker with correct architecture
-RUN cp /lib/ld-linux.so.2 .
-
-# Copy direct dependencies
-RUN ldd ../bin/netsurf-fb | awk '/=> \// {print $3}' | xargs -I{} cp -L -n {} . || true
-
-# Recursive dependency copying
+# Recursively copy all deps
 RUN while true; do \
         missing=0; \
         for lib in *.so*; do \
@@ -127,23 +129,16 @@ RUN while true; do \
         [ "$missing" = 0 ] && break; \
     done
 
-# Verify all libraries are present
-RUN echo "Verifying libraries:" && \
-    ldd ../bin/netsurf-fb | awk '/not found/ {print "Missing library:", $1}' && \
-    ! ldd ../bin/netsurf-fb | grep -q 'not found'
-
-# Set RPATH for all libraries
+# Patch RPATH
 RUN find . -maxdepth 1 -type f -name '*.so*' -exec patchelf --set-rpath '$ORIGIN' {} \; || true
-
-# Patch main binary with correct rpath (but don't change interpreter)
 RUN patchelf --set-rpath '$ORIGIN/../lib' ../bin/netsurf-fb
 
-# Create AppRun script that uses the bundled dynamic linker explicitly
+# Create AppRun
 WORKDIR /AppDir
 RUN echo '#!/bin/sh\nexport HERE="$(dirname "$(readlink -f "$0")")"\nexport LD_LIBRARY_PATH="$HERE/usr/lib"\nexport NETSURFRES="$HERE/usr/share/netsurf"\nexec "$HERE/usr/lib/ld-linux.so.2" "$HERE/usr/bin/netsurf-fb" file://"$HERE/usr/share/netsurf/index.html"' > AppRun && \
     chmod +x AppRun
 
-# Create desktop entry
+# Desktop file
 RUN echo '[Desktop Entry]\nType=Application\nName=NetSurf FB\nExec=AppRun\nIcon=netsurf\nCategories=Network;WebBrowser;' > netsurf.desktop
 
 # AppImage tooling
