@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e46204b3-9049-45c4-88bf-b7e2b745aac0" name="Changes" comment=",">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/netsurf-fb-i386.AppImage" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,6 +94,8 @@
       <workItem from="1748421887154" duration="9661000" />
       <workItem from="1748933262354" duration="23104000" />
       <workItem from="1749218950659" duration="2657000" />
+      <workItem from="1749543308293" duration="2163000" />
+      <workItem from="1750146572968" duration="554000" />
     </task>
     <task id="LOCAL-00001" summary=",">
       <option name="closed" value="true" />
